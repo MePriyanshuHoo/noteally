@@ -12,10 +12,6 @@ import {
   limit,
   onSnapshot,
   serverTimestamp,
-  writeBatch,
-  QuerySnapshot,
-  DocumentSnapshot,
-  FirestoreError,
   Timestamp
 } from 'firebase/firestore'
 import { db } from '@/lib/firebase'

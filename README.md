@@ -8,7 +8,8 @@ Noteally is a minimalist, photo-based notepad web application designed for stude
 
 - 🤖 **AI-Powered Text Extraction**: Using Google Gemini's advanced language models with 90%+ accuracy
 - 📷 **Real-Time Camera Capture**: Direct webcam integration for immediate photo taking
-- ✏️ **Editor-First Design**: Full-screen rich text editor with advanced formatting
+- ✏️ **Enhanced Accessible Editor**: WCAG 2.1 AA compliant rich text editor with Notion-like features
+- ♿ **Full Accessibility**: Complete keyboard navigation, screen reader support, and inclusive design
 - 🎯 **Intuitive Dock Interface**: Apple-style dock with smooth animations and quick access tools
 - 🔍 **Powerful Search & Organization**: Lightning-fast search with smart tagging and categories
 - 🌐 **Cross-Device Sync**: Access notes anywhere with real-time synchronization
@@ -47,6 +48,7 @@ Noteally is a minimalist, photo-based notepad web application designed for stude
    ```
 
 3. **Firebase setup**
+   See [docs/firebase-setup.md](docs/firebase-setup.md) for detailed instructions.
    ```bash
    npm install -g firebase-tools
    firebase login
@@ -85,6 +87,25 @@ noteally/
 ├── firestore.rules           # Database security rules
 └── firebase.json             # Firebase configuration
 ```
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[Enhanced Editor Guide](docs/ENHANCED_EDITOR_README.md)** - Complete guide to the accessible markdown editor
+- **[Accessibility Implementation](docs/ACCESSIBILITY_IMPLEMENTATION.md)** - WCAG 2.1 AA compliance details
+- **[Markdown Editor Guide](docs/MARKDOWN_EDITOR_GUIDE.md)** - User guide for editor features
+- **[Firebase Setup](docs/firebase-setup.md)** - Step-by-step Firebase configuration
+- **[Recent Fixes](docs/RECENT_FIXES.md)** - Latest updates and bug fixes
+
+### Key Features of the Enhanced Editor
+
+- **WCAG 2.1 AA Compliant**: Full accessibility support with keyboard navigation and screen reader compatibility
+- **Rich Formatting**: Bold, italic, underline, strikethrough, highlighting, superscript, subscript
+- **Document Structure**: Six heading levels, lists (bullet, numbered, task), tables, blockquotes
+- **Interactive Elements**: Checkable task lists, resizable tables, hyperlinks
+- **Keyboard Shortcuts**: Comprehensive shortcuts for all formatting options
+- **Smart Features**: Auto-save, character counting, slash commands, bubble menus
 
 ## 🔐 Security
 

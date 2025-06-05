@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import TagInput from '../TagInput'
 
@@ -101,7 +101,6 @@ describe('TagInput', () => {
   })
 
   it('respects maxTags limit', async () => {
-    const user = userEvent.setup()
     const tags = ['tag1', 'tag2']
     render(
       <TagInput 

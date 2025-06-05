@@ -75,7 +75,7 @@ export default function AuthForm({ onSuccess }: AuthFormProps) {
         await signInWithEmail(formData.email, formData.password)
       }
       onSuccess?.()
-    } catch (err) {
+    } catch {
       // Error is handled by useAuth hook
     }
   }
@@ -84,7 +84,7 @@ export default function AuthForm({ onSuccess }: AuthFormProps) {
     try {
       await signInWithGoogle()
       onSuccess?.()
-    } catch (err) {
+    } catch {
       // Error is handled by useAuth hook
     }
   }

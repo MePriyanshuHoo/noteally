@@ -24,7 +24,7 @@ export default function ImageUpload({ onImageSelect, onTextExtracted, className 
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
   const [error, setError] = useState<string>('')
 
-  const processImageOCR = async (file: File, fileId: string) => {
+  const processImageOCR = useCallback(async (file: File, fileId: string) => {
     try {
       // Update file status to processing
       setUploadedFiles(prev => 
@@ -75,9 +75,9 @@ export default function ImageUpload({ onImageSelect, onTextExtracted, className 
         prev.map(f => f.id === fileId ? { ...f, isProcessing: false } : f)
       )
     }
-  }
+  }, [onTextExtracted])
 
-  const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
+  const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: { file: File; errors: { code: string; message: string }[] }[]) => {
     // Clear any previous errors
     setError('')
 
@@ -117,7 +117,7 @@ export default function ImageUpload({ onImageSelect, onTextExtracted, className 
       }
       reader.readAsDataURL(file)
     })
-  }, [onImageSelect, onTextExtracted])
+  }, [onImageSelect, processImageOCR])
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,

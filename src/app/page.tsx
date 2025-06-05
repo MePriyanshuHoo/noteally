@@ -104,7 +104,7 @@ function HomeContent() {
               Perfect for Every Reader
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Whether you're studying, researching, or just love reading, Noteally adapts to your workflow
+              Whether you&apos;re studying, researching, or just love reading, Noteally adapts to your workflow
             </p>
           </motion.div>
 
@@ -326,7 +326,7 @@ function HomeContent() {
               Ready to Transform Your Reading?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of students, researchers, and book lovers who've revolutionized their note-taking workflow
+              Join thousands of students, researchers, and book lovers who&apos;ve revolutionized their note-taking workflow
             </p>
             <Link href="/auth">
               <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg">

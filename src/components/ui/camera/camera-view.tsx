@@ -32,7 +32,7 @@ export const CameraView = React.forwardRef<unknown, CameraProps>(
         await initCameraStream();
       }
       init();
-    }, [activeDeviceId]);
+    }, [activeDeviceId, initCameraStream]);
 
     return (
       <div

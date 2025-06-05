@@ -136,7 +136,7 @@ export function useNote(userId: string | null, options: UseNoteOptions = {}): Us
     return () => {
       if (timeout) clearTimeout(timeout)
     }
-  }, [content, userId, note, autoSaveDelay, saveNote, hasUserEdited])
+  }, [content, userId, note, autoSaveDelay, saveNote, hasUserEdited, autoSaveTimeout])
 
   const createNewNote = useCallback(async (title?: string): Promise<string | null> => {
     if (!userId) return null

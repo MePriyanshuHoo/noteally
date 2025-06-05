@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { FirestoreService } from '@/services/firestoreService'
 import { Note } from '@/types/note'
@@ -32,13 +32,7 @@ function NoteDetailContent() {
 
   const noteId = Array.isArray(params.id) ? params.id[0] : params.id
 
-  useEffect(() => {
-    if (noteId && user?.uid && isAuthenticated) {
-      fetchNote()
-    }
-  }, [noteId, user?.uid, isAuthenticated])
-
-  const fetchNote = async () => {
+  const fetchNote = useCallback(async () => {
     if (!noteId || !user?.uid) {
       setError('Missing note ID or user authentication')
       return
@@ -61,7 +55,13 @@ function NoteDetailContent() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [noteId, user?.uid])
+
+  useEffect(() => {
+    if (noteId && user?.uid && isAuthenticated) {
+      fetchNote()
+    }
+  }, [noteId, user?.uid, isAuthenticated, fetchNote])
 
   const handleEditNote = () => {
     if (note) {
@@ -278,13 +278,7 @@ function NoteDetailContent() {
   )
 }
 
-interface NoteDetailPageProps {
-  params: Promise<{
-    id: string
-  }>
-}
-
-export default function NoteDetailPage({ params }: NoteDetailPageProps) {
+export default function NoteDetailPage() {
   return (
     <ProtectedRoute allowAnonymous={true} redirectTo="/auth">
       <NoteDetailContent />

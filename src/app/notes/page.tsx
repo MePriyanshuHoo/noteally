@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useNoteEnrichment } from '@/hooks/useNoteEnrichment'
 import { FirestoreService } from '@/services/firestoreService'
@@ -26,14 +26,7 @@ function NotesContent() {
   const [deletingNoteId, setDeletingNoteId] = useState<string | null>(null)
   const router = useRouter()
 
-  // Fetch notes when user is available and authenticated
-  useEffect(() => {
-    if (user?.uid && isAuthenticated) {
-      fetchNotes()
-    }
-  }, [user?.uid, isAuthenticated])
-
-  const fetchNotes = async () => {
+  const fetchNotes = useCallback(async () => {
     if (!user?.uid) {
       setError('No user authenticated')
       return
@@ -67,7 +60,14 @@ function NotesContent() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [user?.uid])
+
+  // Fetch notes when user is available and authenticated
+  useEffect(() => {
+    if (user?.uid && isAuthenticated) {
+      fetchNotes()
+    }
+  }, [user?.uid, isAuthenticated, fetchNotes])
 
   const handleEnrichNote = async (note: Note) => {
     if (!note.content || note.content.trim().length === 0) {

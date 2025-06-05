@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { X, Plus, Folder, ChevronDown } from 'lucide-react'
+import { X, Plus, Folder } from 'lucide-react'
 
 interface CategoryInputProps {
   categories: string[]
@@ -152,7 +152,7 @@ export default function CategoryInput({
                     className="w-full text-left px-3 py-2 hover:bg-gray-100 flex items-center gap-2 text-gray-600"
                   >
                     <Plus className="h-3 w-3" />
-                    Create "{inputValue}"
+                    Create &quot;{inputValue}&quot;
                   </button>
                 )}
               </div>

@@ -6,7 +6,7 @@ import { CameraView } from "./camera-view";
 import { FC, useRef, useEffect, useState } from "react";
 import { CameraType } from "@/components/ui/camera/camera-types";
 import { useCamera } from "@/components/ui/camera/camera-provider";
-import { cn } from "@/lib/utils";
+
 import {
   Dialog,
   DialogContent,
@@ -50,7 +50,7 @@ const Camera: FC<CameraProps> = ({ onClosed, onCapturedImages, onOcrProcess }) =
     return () => {
       stopStream();
     };
-  }, []);
+  }, [stopStream]);
 
   const handleCapture = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

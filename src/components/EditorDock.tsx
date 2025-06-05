@@ -34,10 +34,6 @@ export default function EditorDock({
   const [isUploadOpen, setIsUploadOpen] = useState(false)
   const [isCameraOpen, setIsCameraOpen] = useState(false)
   const [capturedImages, setCapturedImages] = useState<string[]>([])
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [showPromptInput, setShowPromptInput] = useState(false)
-  const [ocrPrompt, setOcrPrompt] = useState('')
-  const [ocrSuccess, setOcrSuccess] = useState(false)
 
   const handleImageSelect = (file: File) => {
     if (onImageSelect) {
@@ -71,8 +67,6 @@ export default function EditorDock({
     }
 
     try {
-      setIsProcessing(true);
-      
       // Process the first captured image
       const imageData = images[0];
       const base64 = imageData.split(',')[1];
@@ -118,8 +112,6 @@ export default function EditorDock({
       const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
       alert(`OCR processing failed: ${errorMessage}\n\nPlease try again or check the console for more details.`);
       
-    } finally {
-      setIsProcessing(false);
     }
   }
 
